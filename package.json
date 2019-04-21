@@ -2,7 +2,8 @@
   "name": "twilio-playground",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^4.0.2"
+    "@rails/webpacker": "^4.0.2",
+    "bulma": "^0.7.4"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.3.1"
