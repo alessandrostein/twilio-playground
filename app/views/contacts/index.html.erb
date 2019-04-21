@@ -1,0 +1,32 @@
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li class="is-active">
+        <%= link_to 'Contacts', contacts_path %>        
+    </li>
+  </ul>
+</nav>
+
+<%= link_to 'Add contact', new_contact_path, class: 'button is-link' %>
+
+<table class="table is-bordered is-striped is-fullwidth">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th></th>      
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+        <tr>        
+            <td>
+                <%= link_to contact.name, contact_path(contact) %>                
+            </td>
+            <td><%= contact.phone %></td>
+            <td>
+                <%= link_to 'Edit', edit_contact_path(contact) %>
+            </td>            
+        </tr>
+    <% end %>    
+  </tbody>
+</table>
