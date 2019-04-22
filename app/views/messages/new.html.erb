@@ -1,0 +1,24 @@
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><%= link_to 'Contacts', contacts_path %></li>
+    <li><%= link_to 'Messages', '#' %></li>
+    <li class="is-active">
+        <%= link_to 'New', '#' %>
+    </li>
+  </ul>
+</nav>
+
+<%= form_for @message do |f| %>
+    <div class="field">
+        <%= f.label :recipient_id, class: 'label' %>    
+        <%= f.select :recipient_id, options_for_select(Contact.pluck(:name, :id), f.object.recipient_id) %>
+    </div>
+    <div class="field">
+        <%= f.label :text, class: 'label' %>
+        <%= f.text_field :text, class: 'input' %>
+    </div>
+
+    <div class="control">
+        <%= f.submit "Save", class: 'button is-primary' %>
+    </div>
+<% end %>

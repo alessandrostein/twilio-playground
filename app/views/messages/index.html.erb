@@ -1,0 +1,27 @@
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><%= link_to 'Contacts', contacts_path %></li>
+    <li><%= link_to @recipient.name, '#' %></li>    
+    <li class="is-active">
+        <%= link_to 'Messages', '#' %>
+    </li>
+  </ul>
+</nav>
+
+<%= link_to 'New message', new_message_path(recipient_id: @recipient.id), class: 'button is-link' %>
+
+<p>
+    You sent messages for <%= @recipient.name %> (<%= @recipient.phone %>)
+</p>
+<ul>
+    <% @messages.each do |message| %>
+        <li>
+            <small>
+                <%= l(message.created_at, format: :short) %>
+            </small>
+            <p> 
+                <%= message.text %>
+            </p>
+        </li>   
+    <% end %>
+</ul>

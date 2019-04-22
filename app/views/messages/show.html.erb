@@ -1,0 +1,22 @@
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><%= link_to 'Contacts', contacts_path %></li>
+    <li><%= link_to 'Messages', '#' %></li>
+    <li class="is-active">
+        <%= link_to @message.recipient.name, '#' %>
+    </li>
+  </ul>
+</nav>
+
+<div class="card">
+  <div class="card-content">
+    <p class="title">
+      <%= @message.recipient.name %>
+    </p>
+    <p class="subtitle">
+      <%= @message.text %>
+    </p>
+  </div>
+  <footer class="card-footer">    
+  </footer>
+</div>

@@ -13,7 +13,8 @@
     <tr>
       <th>Name</th>
       <th>Phone</th>
-      <th></th>      
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +26,9 @@
             <td><%= contact.phone %></td>
             <td>
                 <%= link_to 'Edit', edit_contact_path(contact) %>
+            </td>
+            <td>
+                <%= link_to 'Messages', messages_contact_path(contact) %>
             </td>            
         </tr>
     <% end %>    
