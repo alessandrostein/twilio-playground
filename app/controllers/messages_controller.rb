@@ -20,7 +20,15 @@ class MessagesController < ApplicationController
         send_sms if @message.save
         respond_with(@message)
     end
-    
+
+    def reply        
+        message_body = params["Body"]
+        from_number = params["From"]
+
+        sender = Contact.find_by(phone: from_number)
+        sender.sent_messages.create(recipient: current_contact, text: message_body)
+    end
+
     private
 
     def send_sms

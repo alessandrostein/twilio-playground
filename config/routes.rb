@@ -5,6 +5,10 @@ Rails.application.routes.draw do
       get 'messages', to: 'messages#index'
     end
   end
-  resources :messages, only: [:show, :new, :create]
+  resources :messages, only: [:show, :new, :create] do
+    collection do
+      post 'reply'
+    end
+  end
   root "contacts#index"
 end
