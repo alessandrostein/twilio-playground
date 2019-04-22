@@ -16,11 +16,16 @@ class MessagesController < ApplicationController
     end
     
     def create
-        @message = current_contact.sent_messages.create(message_params)
+        @message = current_contact.sent_messages.new(message_params)
+        send_sms if @message.save
         respond_with(@message)
     end
-
+    
     private
+
+    def send_sms
+        TwilioNotifier.new.notify(@message.recipient.phone, @message.text)
+    end
 
     def message_params
         params.require(:message).permit(:recipient_id, :text)
