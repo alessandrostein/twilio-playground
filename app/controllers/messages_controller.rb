@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
     def index
         @recipient = Contact.find(params[:id])
-        @messages = current_contact.sent_messages.where(recipient_id: @recipient)
+        @messages = Message.between(current_contact.id, @recipient.id)
     end
 
     def show
@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
         respond_with(@message)
     end
 
-    def reply        
+    def reply
         message_body = params["Body"]
         from_number = params["From"]
 

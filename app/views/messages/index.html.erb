@@ -11,7 +11,7 @@
 <%= link_to 'New message', new_message_path(recipient_id: @recipient.id), class: 'button is-link' %>
 
 <p>
-    You sent messages for <%= @recipient.name %> (<%= @recipient.phone %>)
+    Your conversation with <%= @recipient.name %> (<%= @recipient.phone %>)
 </p>
 <ul>
     <% @messages.each do |message| %>
@@ -20,7 +20,7 @@
                 <%= l(message.created_at, format: :short) %>
             </small>
             <p> 
-                <%= message.text %>
+                <%= message.sender.name %>: <%= message.text %>
             </p>
         </li>   
     <% end %>
