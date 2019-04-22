@@ -1,9 +1,7 @@
 class TwilioNotifier
 
-    DEFAULT_FROM = "+16264653165"
-    
     def notify(to, text)
-        client.messages.create(from: DEFAULT_FROM, to: to, body: text)
+        client.messages.create(from: ENV['TWILIO_ACCOUNT_PHONE'], to: to, body: text)
     end
 
     private
